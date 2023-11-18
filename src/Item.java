@@ -35,4 +35,20 @@ class Item {
     public double getDiscountAmount() {
         return discountAmount;
     }
+
+    public double calculateDiscountPrice() {
+        double newPrice = this.price;
+        switch (this.discountType) {
+            case PERCENTAGE:
+                newPrice -= this.discountAmount * newPrice;
+                break;
+            case AMOUNT:
+                newPrice -= this.discountAmount;
+                break;
+            default:
+                // no discount
+                break;
+        }
+        return newPrice;
+    }
 }
